@@ -1,0 +1,17 @@
+.header {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: mediumseagreen;
+    color: white;
+    font-size: 25px;
+}
+.hr {
+    height: 20px;
+    background-color: white;
+}
+.outlet {
+    background-color: coral;
+    padding: 20px 0;
+}
