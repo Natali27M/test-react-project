@@ -2,8 +2,8 @@ import {
     createAsyncThunk, createSlice, Draft, PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { authService } from "../services";
-import {IStateAuth, IUser, IUserLoginData} from "../interfaces";
+import { IStateAuth, IUser, IUserLoginData } from '../../interfaces';
+import { authService } from '../../services';
 
 const initialState: IStateAuth = {
     user: null,

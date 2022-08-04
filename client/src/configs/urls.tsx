@@ -1,9 +1,9 @@
-const baseURL = "http://localhost:5200";
+const baseURL = 'http://localhost:5200';
 
 export const urls = {
-    post: "/posts",
-    user: "/users",
-    comment: "/comments",
+    post: '/posts',
+    user: '/users',
+    comment: '/comments',
     auth: {
         signUp: '/auth/registration',
         login: '/auth/login',

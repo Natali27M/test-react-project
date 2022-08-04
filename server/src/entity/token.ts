@@ -2,11 +2,12 @@ import {
     Column, Entity, OneToOne, JoinColumn, PrimaryGeneratedColumn,
     CreateDateColumn, DeleteDateColumn,
 } from 'typeorm';
+
 import { IToken } from '../interfaces';
-
 import { User } from './user';
+import { config } from '../configs';
 
-@Entity('Tokens', { database: 'zjY0l4ljMQ' })
+@Entity('Tokens', { database: config.DB_NAME })
 export class Token implements IToken {
     @PrimaryGeneratedColumn()
         id: number;

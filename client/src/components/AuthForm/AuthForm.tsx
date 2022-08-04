@@ -19,7 +19,6 @@ const AuthForm = () => {
     const { auth } = Constants;
     const navigate = useNavigate();
     const [userStatus, setUserStatus] = useState<string>(auth.guest);
-
     const dispatch = useAppDispatch();
     const { user } = useAppSelector((state) => state.auth);
 
@@ -41,22 +40,25 @@ const AuthForm = () => {
             dispatch(loginNewUser(data));
             if (user) navigate('/', { replace: true });
         } else {
-            checkUserStatus();
+            checkUserStatus().then(value => value);
         }
     };
 
     return (
-        <div className={css.authFormBlock}>
-            <h3>Вхід/Реєстрація</h3>
-            <div className={css.authForm}>
-                <form onSubmit={handleSubmit(enter)}>
-                    <label htmlFor="email">
+        <div className={ css.authFormBlock }>
+
+            <h3>Exit/Registration</h3>
+
+            <div className={ css.authForm }>
+                <form onSubmit={  handleSubmit(enter)}>
+
+                    <label htmlFor='email'>
                         e-mail <span>*</span>
                         <input
-                            type="email"
-                            id="email"
-                            placeholder="olyasluva@gmail.com"
-                            {...register('email', {
+                            type='email'
+                            id='email'
+                            placeholder='olyasluva@gmail.com'
+                            { ...register('email', {
                                 onChange: () => {
                                     if (userStatus !== auth.guest) {
                                         setUserStatus(auth.guest);
@@ -65,62 +67,73 @@ const AuthForm = () => {
                             })}
                         />
                     </label>
+
                     {userStatus === auth.isSignUp ? (
                         <div className={css.signUp}>
+
                             <p>Ооооо you is new user</p>
-                            <label htmlFor="name">
-                                {/* eslint-disable-next-line react/no-unescaped-entities */}
+
+                            <label htmlFor='name'>
                                 Name
                                 <input
-                                    type="text"
-                                    id="name"
-                                    placeholder="Name"
-                                    {...register('name')}
+                                    type='text'
+                                    id='name'
+                                    placeholder='Name'
+                                    { ...register('name') }
                                 />
                             </label>
-                            <label htmlFor="surname">
-                                {/* eslint-disable-next-line react/no-unescaped-entities */}
+
+                            <label htmlFor='surname'>
                                 Surname
                                 <input
-                                    type="text"
-                                    id="surname"
-                                    placeholder="Surname"
-                                    {...register('surname')}
+                                    type='text'
+                                    id='surname'
+                                    placeholder='Surname'
+                                    { ...register('surname') }
                                 />
                             </label>
-                            <label htmlFor="password">
+
+                            <label htmlFor='password'>
                                 Пароль
                                 <input
-                                    autoComplete="dadawd"
-                                    type="password"
-                                    id="password"
-                                    {...register('password')}
+                                    autoComplete='dadawd'
+                                    type='password'
+                                    id='password'
+                                    { ...register('password') }
                                 />
                             </label>
+
                         </div>
+
                     ) : userStatus === auth.isLogin ? (
+
                         <div>
-                            <label htmlFor="password">
+                            <label htmlFor='password'>
                                 Пароль
                                 <input
-                                    autoComplete="dadawd"
-                                    type="password"
-                                    id="password"
-                                    {...register('password')}
+                                    autoComplete='dadawd'
+                                    type='password'
+                                    id='password/'
+                                    { ...register('password') }
                                 />
                             </label>
                         </div>
+
                     ) : null}
-                    <button type="submit">
+
+                    <button type='submit'>
                         {
                             userStatus === auth.isSignUp
-                                ? 'Зареєструватись'
+                                ? 'Register'
                                 : userStatus === auth.isLogin
-                                    ? 'Увійти' : 'Далі'
+                                    ? 'Sign in' : 'Next'
                         }
                     </button>
+
                 </form>
+
             </div>
+
         </div>
     );
 };

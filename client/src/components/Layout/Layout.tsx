@@ -6,16 +6,19 @@ const Layout = () => {
 
     return (
         <div>
-            <div className={css.header}>
+
+            <div className={ css.header }>
                 Posts
-                {/*<NavLink to="/posts">Posts</NavLink>*/}
             </div>
-            <div className={css.hr}></div>
-            <div className={css.outlet}>
+
+            <div className={ css.hr }></div>
+
+            <div className={ css.outlet }>
                 <Outlet/>
             </div>
+
         </div>
     );
 };
 
-export {Layout};
+export { Layout };

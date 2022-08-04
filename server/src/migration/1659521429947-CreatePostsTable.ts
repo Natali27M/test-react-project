@@ -7,7 +7,7 @@ export class CreatePostsTable1659521429947 implements MigrationInterface {
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 userId INT NOT NULL,
                 title VARCHAR(255) NOT NULL,
-                description VARCHAR(255),
+                description VARCHAR(1000),
                 FOREIGN KEY (userId) REFERENCES Users (id) ON DELETE CASCADE,
                 createdAt TIMESTAMP DEFAULT(UTC_TIMESTAMP()) NOT NULL,
                 deletedAt TIMESTAMP

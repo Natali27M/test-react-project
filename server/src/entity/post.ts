@@ -6,8 +6,9 @@ import { CommonFields } from './commonFields';
 import { User } from './user';
 import { Comment } from './comment';
 import { IPost } from '../interfaces';
+import { config } from '../configs';
 
-@Entity('Posts', { database: 'zjY0l4ljMQ' })
+@Entity('Posts', { database: config.DB_NAME })
 export class Post extends CommonFields implements IPost {
     @PrimaryGeneratedColumn()
 
@@ -28,7 +29,7 @@ export class Post extends CommonFields implements IPost {
 
     @Column({
         type: 'varchar',
-        width: 255,
+        width: 1000,
         nullable: false,
     })
         description: string;

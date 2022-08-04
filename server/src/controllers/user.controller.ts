@@ -1,4 +1,4 @@
-import {NextFunction, Request, Response} from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 import { userService } from '../services';
 import { IUser } from '../interfaces';
@@ -10,7 +10,7 @@ class UserController {
     }
 
     public async getUserByEmail(req: Request, res: Response, next: NextFunction):
-        Promise<Response<any> | undefined> {
+        Promise<Response<IUser> | undefined> {
         try {
             const { email } = req.params;
             const user = await userService.getUserByEmail(email);
@@ -24,12 +24,6 @@ class UserController {
         const allUsers = await userService.getUsers();
         return res.json(allUsers);
     }
-
-    // public async getUserById(req: Request, res: Response): Promise<Response<IUser>> {
-    //     const { id } = req.params;
-    //     const user = await userService.getUserById(+id);
-    //     return res.json(user);
-    // }
 }
 
 export const userController = new UserController();

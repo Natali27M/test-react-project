@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {useAppDispatch, useAppSelector} from "../../hook";
-import {useLocation} from "react-router-dom";
-import {createComment} from "../../store";
+import { useLocation } from 'react-router-dom';
+
+import { createComment } from '../../store';
+import { Comments } from '../../components';
+import { useAppDispatch, useAppSelector } from '../../hook';
 
 const CommentsPage = () => {
     const location = useLocation();
@@ -29,16 +31,18 @@ const CommentsPage = () => {
     return (
         <div>
 
-            <form onSubmit={handleSubmit(submit)}>
+            <form onSubmit={ handleSubmit(submit) }>
 
-                <label htmlFor="title">Comment :
-                    <input id="title" type="text" {...register('description')} />
+                <label htmlFor='title'>Comment :
+                    <input id='title' type='text' {...register('description')} />
                 </label>
 
 
-                <button type="submit">Опублікувати</button>
+                <button type='submit'>Publish</button>
 
             </form>
+
+            <Comments postId={ location.state }/>
 
         </div>
     );

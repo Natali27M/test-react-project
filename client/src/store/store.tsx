@@ -1,13 +1,14 @@
-import {configureStore, combineReducers} from "@reduxjs/toolkit";
-import postSliceReducer from "./post.slice";
-import userSliceReducer from "./user.slice";
-import authSliceReducer from "./auth.slice";
-import commentSliceReducer from "./comment.slice";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
+import postSliceReducer from './slices/post.slice';
+import userSliceReducer from './slices/user.slice';
+import commentSliceReducer from './slices/comment.slice';
+import authSliceReducer from './slices/auth.slice';
 
 const rootReducer = combineReducers({
     posts: postSliceReducer,
     users: userSliceReducer,
-    comment: commentSliceReducer,
+    comments: commentSliceReducer,
     auth: authSliceReducer,
 });
 
@@ -19,4 +20,4 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 export type AppStore = ReturnType<typeof setupStore>;
 
-export type AppDispatch = AppStore["dispatch"];
+export type AppDispatch = AppStore['dispatch'];

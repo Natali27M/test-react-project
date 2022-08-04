@@ -6,8 +6,9 @@ import { CommonFields } from './commonFields';
 import { User } from './user';
 import { Post } from './post';
 import { IComment } from '../interfaces';
+import { config } from '../configs';
 
-@Entity('Comments', { database: 'zjY0l4ljMQ' })
+@Entity('Comments', { database: config.DB_NAME })
 export class Comment extends CommonFields implements IComment {
     @PrimaryGeneratedColumn()
 

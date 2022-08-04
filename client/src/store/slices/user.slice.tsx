@@ -1,15 +1,16 @@
-import {createAsyncThunk, createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
-import { userService} from "../services";
-import {IActionFulledUsers, IStateUser} from "../interfaces";
+import { createAsyncThunk, createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+
+import { IActionFulledUsers, IStateUser } from '../../interfaces';
+import { userService } from '../../services';
 
 export const getAllUsers = createAsyncThunk(
-    "userSlice/getAllUsers",
+    'userSlice/getAllUsers',
 
     async () => {
         try {
             const users = await userService.getAll();
 
-            return {users: users.data};
+            return { users: users.data };
 
         } catch (e){
             console.log(e);
@@ -24,7 +25,7 @@ const initialState: IStateUser = {
 };
 
 const userSlice = createSlice({
-    name: "userSlice",
+    name: 'userSlice',
     initialState,
 
     reducers: {
@@ -33,15 +34,15 @@ const userSlice = createSlice({
 
     extraReducers: {
         [getAllUsers.pending.type]: (state: Draft<IStateUser>) => {
-            state.status = "pending";
+            state.status = 'pending';
             state.error = null;
         },
         [getAllUsers.fulfilled.type]: (state: Draft<IStateUser>, action: PayloadAction<IActionFulledUsers>) => {
-            state.status = "fulfilled";
+            state.status = 'fulfilled';
             state.users = action.payload.users;
         },
         [getAllUsers.rejected.type]: (state: Draft<IStateUser>, action: PayloadAction<string>) => {
-            state.status = "reject";
+            state.status = 'reject';
             state.error = action.payload;
         }
     }

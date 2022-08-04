@@ -23,15 +23,6 @@ class UserService {
         return getManager().getRepository(User).find();
     }
 
-    // public async getUserById(id:number):Promise<IUser | undefined> {
-    //     return getManager()
-    //         .getRepository(User)
-    //         .createQueryBuilder('user')
-    //         .where('user.id = :id', { id })
-    //         .andWhere('user.deletedAt IS NULL')
-    //         .getOne();
-    // }
-
     public async getUserByEmail(email: string): Promise<IUser | undefined> {
         return getManager()
             .getRepository(User)

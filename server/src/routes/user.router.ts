@@ -11,7 +11,6 @@ router.get(
     userController.getUserByEmail,
 );
 router.get('/', userController.getUsers);
-// router.get('/:id', userController.getUserById);
 router.post('/', userController.createUser);
 
 export const userRouter = router;

@@ -6,8 +6,9 @@ import { Post } from './post';
 import { Comment } from './comment';
 import { IUser } from '../interfaces';
 import { CommonFields } from './commonFields';
+import { config } from '../configs';
 
-@Entity('Users', { database: 'zjY0l4ljMQ' })
+@Entity('Users', { database: config.DB_NAME })
 export class User extends CommonFields implements IUser {
     @PrimaryGeneratedColumn()
 
