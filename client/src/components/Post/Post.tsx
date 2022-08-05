@@ -1,7 +1,9 @@
 import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { IPost, IUser } from '../../interfaces';
+import {IPost, IUser} from '../../interfaces';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { getAllComments, getAllUsers } from '../../store';
 import css from './Post.module.css';
@@ -31,47 +33,49 @@ const Post: FC<{ post: IPost, users: IUser[]}> = (
     useEffect(() => {
         dispatch(getAllUsers())
         dispatch(getAllComments())
-    }, []);
+    }, [dispatch]);
 
     return (
-        <div className={css.post}>
-            {
-                !user
-                    ? (
-                        <Link to='/login' className={ css.link }>
-                            <div className={ css.user }>
-                                <div className={ css.name }>{ name }</div>
-                                <div className={ css.name }>{ surname }</div>
-                            </div>
+    <div className={css.post}>
+        {
+            !user
+                ? (
+                    <Link to='/login' className={ css.link }>
+                             <Card className={css.user}>
+                                 <Card.Body>
+                                     <Card.Title className={css.user}>
+                                         <div className={ css.name }>{ name }</div>
+                                         <div className={ css.name }>{ surname }</div>
+                                     </Card.Title>
+                                     <Card.Subtitle className={ css.title }>{ title }</Card.Subtitle>
+                                     <Card.Text className={ css.description }>{ description }</Card.Text>
+                                     <div className={ css.title }>Comments : { numberComments }</div>
+                                 </Card.Body>
+                             </Card>
+                    </Link>
+                )
 
-                            <div className={ css.title }>{ title }</div>
+                :
 
-                            <div className={ css.description }>{ description }</div>
+                (
+                    <Link to='/comments' state={ id } className={ css.link }>
 
-                            <div>Comments : { numberComments }</div>
-                        </Link>
-                    )
-
-                    :
-
-                    (
-                        <Link to='/comments' state={ id } className={ css.link }>
-
-                            <div className={ css.user }>
-                                <div className={ css.name }>{ name }</div>
-                                <div className={ css.name }>{ surname }</div>
-                            </div>
-
-                            <div className={ css.title }>{ title }</div>
-
-                            <div className={ css.description }>{ description }</div>
-
-                            <div>Comments : { numberComments }</div>
-                        </Link>
-                    )
-            }
-        </div>
-    );
+                        <Card className={css.user}>
+                            <Card.Body>
+                                <Card.Title className={css.user}>
+                                    <div className={ css.name }>{ name }</div>
+                                    <div className={ css.name }>{ surname }</div>
+                                </Card.Title>
+                                <Card.Subtitle className={ css.title }>{ title }</Card.Subtitle>
+                                <Card.Text className={ css.description }>{ description }</Card.Text>
+                                <div className={ css.title }>Comments : { numberComments }</div>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                )
+        }
+    </div>
+)
 };
 
 export { Post };

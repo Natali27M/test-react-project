@@ -55,6 +55,7 @@ const AuthForm = () => {
                     <label htmlFor='email'>
                         e-mail <span>*</span>
                         <input
+                            className={css.password}
                             type='email'
                             id='email'
                             placeholder='olyasluva@gmail.com'
@@ -73,19 +74,21 @@ const AuthForm = () => {
 
                             <p>Ооооо you is new user</p>
 
-                            <label htmlFor='name'>
-                                Name
-                                <input
-                                    type='text'
-                                    id='name'
-                                    placeholder='Name'
-                                    { ...register('name') }
-                                />
-                            </label>
+                                <label htmlFor='name'>
+                                    Name
+                                        <input
+                                            className={css.name}
+                                            type='text'
+                                            id='name'
+                                            placeholder='Name'
+                                            { ...register('name') }
+                                        />
+                                </label>
 
                             <label htmlFor='surname'>
                                 Surname
                                 <input
+                                    className={css.surname}
                                     type='text'
                                     id='surname'
                                     placeholder='Surname'
@@ -96,6 +99,7 @@ const AuthForm = () => {
                             <label htmlFor='password'>
                                 Пароль
                                 <input
+                                    className={css.password}
                                     autoComplete='dadawd'
                                     type='password'
                                     id='password'
@@ -111,6 +115,7 @@ const AuthForm = () => {
                             <label htmlFor='password'>
                                 Пароль
                                 <input
+                                    className={css.password}
                                     autoComplete='dadawd'
                                     type='password'
                                     id='password/'

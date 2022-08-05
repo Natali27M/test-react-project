@@ -2,56 +2,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eceaea;
+    background-color: mediumseagreen;
     font-size: 16px;
+    padding: 20px 0;
 }
 
 .authContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    border: 2px solid grey;
     background-color: white;
-    border-radius: 10px;
-    padding: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 60%;
-}
-
-@media (max-width: 1280px) {
-    .authContainer {
-        width: 80%;
-    }
-}
-
-@media (max-width: 960px) {
-    .authContainer {
-        width: 90%;
-    }
-}
-
-@media (max-width: 860px) {
-    .authContainer {
-        width: 70%;
-        flex-direction: column-reverse;
-    }
-}
-
-@media (max-width: 590px) {
-    .authContainer {
-        width: 90%;
-    }
-}
-
-@media (max-width: 460px) {
-    .authContainer {
-        padding: 5px;
-    }
-}
-
-@media (max-width: 420px) {
-    .authContainer input::placeholder, .authContainer input {
-        display: block;
-    }
 }

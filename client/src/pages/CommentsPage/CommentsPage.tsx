@@ -5,11 +5,12 @@ import { useLocation } from 'react-router-dom';
 import { createComment } from '../../store';
 import { Comments } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hook';
+import css from './CommentsPage.module.css';
 
 const CommentsPage = () => {
     const location = useLocation();
-
     const { user } = useAppSelector((state) => state.auth);
+    const userId = user?.id as number;
 
     const {
         handleSubmit, register, reset,
@@ -31,18 +32,32 @@ const CommentsPage = () => {
     return (
         <div>
 
-            <form onSubmit={ handleSubmit(submit) }>
+            <div className={ css.header }>
+                Comments
+            </div>
 
-                <label htmlFor='title'>Comment :
-                    <input id='title' type='text' {...register('description')} />
-                </label>
+            <div className={ css.hr }></div>
+
+            <div className={css.commentsPage}>
+
+                    <form onSubmit={ handleSubmit(submit) }  className={css.formComment}>
+
+                        <label htmlFor='title'>Your comment :
+                            <input id='title' type='text' {...register('description')} className={css.input}/>
+                        </label>
 
 
-                <button type='submit'>Publish</button>
+                        <button type='submit'>Publish</button>
 
-            </form>
+                    </form>
 
-            <Comments postId={ location.state }/>
+                <Comments postId={ location.state } userId={ userId }/>
+
+            </div>
+
+            <div className={ css.hr }></div>
+
+            <div className={ css.header }></div>
 
         </div>
     );

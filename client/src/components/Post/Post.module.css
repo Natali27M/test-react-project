@@ -1,11 +1,10 @@
 .post {
     width: 50%;
     background-color: white;
-    padding: 50px 10px;
     margin: 10px;
-    border: 2px solid grey;
-    border-radius: 20px;
     text-align: center;
+    box-shadow: 3px -2px 3px;
+
 }
 .user {
     display: flex;

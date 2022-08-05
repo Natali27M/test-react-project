@@ -5,7 +5,9 @@ import { getAllComments } from '../../store';
 import { Comment } from '../../components'
 import css from './Comments.module.css'
 
-const Comments: FC<{ postId: any}> = ({ postId }) => {
+const Comments: FC<{ postId: any, userId: number }> = (
+    { postId, userId }
+) => {
 
     const { comments, status } = useAppSelector(state => state.comments);
 
@@ -22,7 +24,9 @@ const Comments: FC<{ postId: any}> = ({ postId }) => {
             { status === 'fulfilled' ?
 
                 <div className={css.comments}>
-                        { commentsByPost.map(comment => <Comment key={ comment.id } comment={ comment }/>) }
+                        { commentsByPost.map(comment =>
+                            <Comment key={ comment.id } comment={ comment } id={ userId }/>)
+                        }
                 </div>
 
                  :

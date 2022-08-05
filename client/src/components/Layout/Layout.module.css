@@ -8,10 +8,13 @@
     font-size: 25px;
 }
 .hr {
-    height: 20px;
+    height: 5px;
     background-color: white;
 }
 .outlet {
     background-color: coral;
-    padding: 20px 0;
+    padding-top: 50px;
+}
+.accordion-header {
+    background-color: white;
 }
